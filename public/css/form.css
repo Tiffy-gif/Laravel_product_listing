@@ -1,0 +1,129 @@
+form {
+    width: 100%;
+    background: #2b2b3c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    margin-top: 20px;
+}
+
+form .field {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+form .field label {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    color: #d1d1ff;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+form .field input[type='text'],
+form .field textarea,
+form .field select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    color: #f1f1f1;
+    background: #1e1e2f;
+    border: 1px solid #3a3a4f;
+    border-radius: 6px;
+    outline: none;
+    transition: border 0.3s ease, background 0.3s ease;
+    -webkit-appearance: none; /* Remove default arrow in some browsers */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+form .field input:focus,
+form .field textarea:focus,
+form .field select:focus {
+    border-color: #6c63ff;
+    background: #262636;
+}
+
+form .field textarea {
+    height: 150px;
+    resize: none;
+}
+
+/* Optional: Add a custom arrow for the select */
+form .field select {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23d1d1ff' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px 6px;
+    padding-right: 35px;
+}
+
+/* Buttons Row */
+form .field:last-child {
+    display: flex;
+    flex-direction: row; /* Ensures buttons are side by side */
+    gap: 15px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+form .field:last-child input[type='submit'],
+form .field:last-child input[type='reset'] {
+    flex: 1; /* Makes both buttons equal width */
+    padding: 12px;
+    background: linear-gradient(90deg, #3f3fff, #6c63ff);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+form .field:last-child input[type='reset'] {
+    background: linear-gradient(90deg, #ff4e50, #ff1c68);
+}
+
+form .field:last-child input[type='submit']:hover {
+    background: linear-gradient(90deg, #6c63ff, #3f3fff);
+    transform: scale(1.03);
+}
+
+form .field:last-child input[type='reset']:hover {
+    background: linear-gradient(90deg, #ff1c68, #ff4e50);
+    transform: scale(1.03);
+}
+
+/* Alerts for success & error messages */
+.alert {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+.alert.success {
+    background: #2d6a4f;
+    color: #d4f8e8;
+    border: 1px solid #40916c;
+}
+.alert.error {
+    background: #6a1a1a;
+    color: #ffdddd;
+    border: 1px solid #ff4e50;
+}
+.alert.error ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Inline error text */
+.error-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #ff4e50;
+}

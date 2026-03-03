@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #1e1e2f;
+  color: #f1f1f1;
+  line-height: 1.5;
+}
+
+#wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+#left {
+  width: 260px;
+  background: linear-gradient(180deg, #2b2b3c, #1e1e2f);
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  transition: left 0.3s ease;
+  position: relative;
+  z-index: 1200;
+  height: 100vh; 
+}
+
+#left h1 {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+}
+
+#left nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#left nav ul li {
+  list-style: none;
+}
+
+#left nav ul li a {
+  color: #a6a6ff;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+#left nav ul li a:hover {
+  background: #3a3a4f;
+  color: #fff;
+}
+
+/* Sidebar Boxes */
+#left .box {
+  background: #252537;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+#left .box h2 {
+  background: #3a3a4f;
+  color: #d1d1ff;
+  font-size: 16px;
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+#left .box ul {
+  list-style: none;
+  padding: 0;
+}
+
+#left .box ul li a {
+  display: block;
+  padding: 12px 15px;
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.3s, padding-left 0.3s;
+}
+
+#left .box ul li a:hover {
+  background: #3a3a4f;
+  color: #fff;
+  padding-left: 25px;
+}
+
+/* Main Content */
+#right {
+  flex: 1;
+  background: #262636;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+/* Header */
+#rightHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background: linear-gradient(90deg, #3f3fff, #6c63ff);
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 10px;
+  text-wrap: nowrap;
+}
+
+/* Hamburger Menu */
+#hamburgerMenu {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #3f3fff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1150;
+  user-select: none;
+}
+
+#hamburgerMenu div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive sidebar for small screens */
+@media (max-width: 1024px) {
+  /* Show hamburger */
+  #hamburgerMenu {
+    display: block;
+  }
+
+  /* Sidebar offscreen by default (slide left using transform) */
+  #left {
+    position: fixed;
+    top: 0;
+    left: 0;            /* keep at left 0 */
+    height: 100vh;
+    width: 260px;
+    background: linear-gradient(180deg, #2b2b3c, #1e1e2f);
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    z-index: 1300;
+    transform: translateX(-100%);  /* hidden by shifting fully left */
+  }
+
+  /* Sidebar visible when active */
+  #left.active {
+    transform: translateX(0); /* slide in */
+  }
+
+  /* Overlay behind sidebar */
+  #overlaySidebar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 1200;
+    transition: opacity 0.3s ease;
+  }
+
+  #overlaySidebar.active {
+    display: block;
+  }
+
+  /* Main content stays full width, no margin */
+  #right {
+    margin-left: 0 !important;
+    transition: none !important;
+  }
+}
+
+
+/* Large screens - sidebar always visible */
+@media (min-width: 1025px) {
+  #hamburgerMenu {
+    display: none;
+  }
+
+  #overlaySidebar {
+    display: none !important;
+  }
+
+  #left {
+    position: fixed; /* instead of relative */
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 1200;
+  }
+
+  #right {
+    margin-left: 260px;
+  }
+}
+
+@media (max-width: 992px) {
+  #rightHeader {
+    font-size: 18px;
+  }
+}
+
+/* For tablets and large phones */
+@media (max-width: 768px) {
+  #rightHeader {
+    font-size: 16px;
+  }
+}
+
+/* For phones */
+@media (max-width: 480px) {
+  #rightHeader {
+    font-size: 14px;
+  }
+}
+
+#logout-form {
+  width: 100%;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  margin-top: 0;
+}
+
+/* Navigation container */
+.top-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background-color: #1e1e2f;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  color: #eee;
+  border-radius: 12px;
+}
+
+/* Navigation link section */
+.nav-link a {
+  color: #eee;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-link a:hover {
+  color: #ffcc00;
+}
+
+.nav-link span {
+  margin-left: 5px;
+  color: #aaa;
+}
+
+/* Logout button style */
+.logout-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #eee;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+  text-decoration: underline;
+}
+
+.logout-button:hover,
+.logout-button:focus {
+  color: #ff6b6b;
+  outline: none;
+}

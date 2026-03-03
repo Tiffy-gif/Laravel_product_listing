@@ -1,0 +1,47 @@
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.form-buttons > * {
+  flex: 1; /* Make buttons equal width */
+}
+
+/* Update button style */
+.btn-update {
+  padding: 12px 0; /* adjust padding horizontally since width is fixed */
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #3f3fff, #6c63ff);
+  color: #fff;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.btn-update:hover {
+  background: linear-gradient(90deg, #6c63ff, #3f3fff);
+  transform: scale(1.03);
+}
+
+/* Delete button style */
+.btn-delete {
+  padding: 12px 0; /* adjust padding horizontally since width is fixed */
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #e74c3c, #c0392b);
+  color: #fff;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.btn-delete:hover {
+  background: linear-gradient(90deg, #c0392b, #e74c3c);
+  transform: scale(1.03);
+}
